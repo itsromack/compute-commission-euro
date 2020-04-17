@@ -1,0 +1,21 @@
+{
+    "name": "romack/paysera-test",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "psr-2": {
+            "App": "src/"
+        },
+        "classmap": [
+            "src/"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Romack Natividad",
+            "email": "romacknatividad@gmail.com"
+        }
+    ]
+}
