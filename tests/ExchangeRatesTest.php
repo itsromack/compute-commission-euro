@@ -86,5 +86,6 @@ final class ExchangeRatesTest extends TestCase
         $this->assertEquals(10.05, NumbersUtil::round_ceil(10.04123));
         $this->assertEquals(0.09, NumbersUtil::round_ceil(0.08123));
         $this->assertEquals(3.15, NumbersUtil::round_ceil(3.1416));
+        $this->assertEquals(false, (NumbersUtil::round_ceil(3.1416) == 3.14));
     }
 }
