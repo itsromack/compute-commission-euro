@@ -8,6 +8,7 @@ use App\Services\CardMetaDataService;
 use App\Services\ExchangeRateService;
 use App\Utils\InputParser;
 use App\Utils\InputFileReader;
+use App\Utils\NumbersUtil;
 
 final class ExchangeRatesTest extends TestCase
 {
@@ -78,5 +79,12 @@ final class ExchangeRatesTest extends TestCase
         $fileReader->setFile($file_path);
         $fileReader->read();
         $this->assertEquals(true, is_array($fileReader->getContent()));
+    }
+
+    public function testRoundCeil()
+    {
+        $this->assertEquals(10.05, NumbersUtil::round_ceil(10.04123));
+        $this->assertEquals(0.09, NumbersUtil::round_ceil(0.08123));
+        $this->assertEquals(3.15, NumbersUtil::round_ceil(3.1416));
     }
 }
