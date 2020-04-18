@@ -26,6 +26,9 @@ class ExchangeRateService
 
     public function getData()
     {
-        return new EURate($this->result);
+        if (!is_null($this->result)) {
+            return new EURate($this->result);
+        }
+        return null;
     }
 }

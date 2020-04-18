@@ -38,6 +38,9 @@ class CardMetaDataService
 
     public function getData()
     {
-        return new CardMetaData($this->result);
+        if (!is_null($this->result)) {
+            return new CardMetaData($this->result);
+        }
+        return null;
     }
 }
