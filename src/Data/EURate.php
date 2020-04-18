@@ -2,10 +2,6 @@
 
 namespace App\Data;
 
-define('EURO_CURRENCY', 'EUR');
-define('RATE_MULTIPLIER_EU', 0.01);
-define('RATE_MULTIPLIER_NON_EU', 0.02);
-
 use App\Utils\NumbersUtil;
 
 class EURate

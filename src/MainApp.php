@@ -7,6 +7,7 @@ use App\Services\ExchangeRateService;
 use App\Utils\InputParser;
 use App\Utils\CountryCheck;
 use App\Utils\InputFileReader;
+use App\Utils\NumbersUtil;
 
 class MainApp
 {
@@ -46,11 +47,16 @@ class MainApp
                 // Skip current data if invalid
                 if ($metadata === false) continue;
                 $country_code = $metadata->getCountryCode();
-                echo $this->rates->compute(
+                $currency_code = $obj->getCurrency();
+                $rate = $this->rates->getRateByCurrency($currency_code);
+                // Compute commission
+                $commission = NumbersUtil::commission_compute(
+                    $rate,
                     $obj->getAmount(),
-                    $obj->getCurrency(),
+                    $currency_code,
                     CountryCheck::isEU($country_code)
-                ) . "\n";
+                );
+                $this->output($commission);
             }
         }
     }
@@ -64,5 +70,11 @@ class MainApp
             return $metadata;
         }
         return false;
+    }
+
+    public function output($str)
+    {
+        echo $str;
+        echo "\n";
     }
 }
