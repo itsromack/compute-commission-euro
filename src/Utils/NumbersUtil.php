@@ -31,6 +31,12 @@ class NumbersUtil
         if ($is_eu) {
             $result = $rated_amount * RATE_MULTIPLIER_EU;
         }
-        return self::round_ceil($result);
+        return [
+            'rate' => $rate,
+            'amount' => $amount,
+            'currency_code' => $currency_code,
+            'is_eu' => $is_eu,
+            'commission' => self::round_ceil($result)
+        ];
     }
 }

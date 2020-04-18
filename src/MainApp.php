@@ -56,7 +56,8 @@ class MainApp
                     $currency_code,
                     CountryCheck::isEU($country_code)
                 );
-                $this->output($commission);
+                echo $this->output($commission);
+                echo "\n";
             }
         }
     }
@@ -74,7 +75,11 @@ class MainApp
 
     public function output($str)
     {
-        echo $str;
-        echo "\n";
+        return $str['commission'];
+    }
+
+    public function outputJson($data)
+    {
+        return json_encode($data);
     }
 }
